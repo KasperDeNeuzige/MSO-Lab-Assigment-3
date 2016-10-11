@@ -11,7 +11,7 @@ namespace Lab3
         public UIWay isReturn;
         // public DateTime dateValid;
         int tariefeenheden;
-        public float price;
+        public float ticketPrice;
 
         public Ticket(string origin, string dest, /*DateTime dateValid ,*/ UIDiscount discount, UIClass firstClass, UIWay isReturn)
         {
@@ -21,8 +21,8 @@ namespace Lab3
             this.firstClass = firstClass;
             this.isReturn = isReturn;
             //this.dateValid = dateValid;
-            this.tariefeenheden = Tariefeenheden.getTariefeenheden (origin, dest);
-            this.price = price();
+            tariefeenheden = Tariefeenheden.getTariefeenheden (origin, dest);
+            ticketPrice = price();
         }
 
         public float price()

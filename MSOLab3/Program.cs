@@ -9,7 +9,7 @@ namespace Lab3
 		public static void Main (string[] args)
 		{
 			var ui = new UI ();
-			Application.Run (ui);
-		}
+			Application.Run (ui);	
+        }
 	}
 }

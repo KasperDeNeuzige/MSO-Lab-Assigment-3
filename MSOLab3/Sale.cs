@@ -11,11 +11,14 @@ namespace Lab3
         {
             //this.ticket = new Ticket;
             this.amount = amount;
+            ticket = new Ticket(uiinfo.From, uiinfo.To, uiinfo.Discount, uiinfo.Class, uiinfo.Way);
+            Payment payment = new Payment(totalPrice(), uiinfo.Payment);
         }
 
-        double totalPrice()
+        float totalPrice()
         {
-            return ticket.price() * amount;
+            //foreach (Ticket t in tickets)
+            return ticket.ticketPrice;
         }
 
         void logSale(string result)

@@ -13,11 +13,12 @@ namespace Lab3
             c = new IKEAMyntAtare2000();
         }
 
-        public override void HandlePayment(float price)
+        public override bool PaymentSucceeded(float price)
         {
             c.starta();
             c.betala((int)price * 100);
-            c.starta();
+            c.stoppa();
+            return true;
         }
     }
 }

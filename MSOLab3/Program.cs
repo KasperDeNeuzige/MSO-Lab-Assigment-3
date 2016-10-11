@@ -9,7 +9,9 @@ namespace Lab3
 		public static void Main (string[] args)
 		{
 			var ui = new UI ();
-			Application.Run (ui);	
+			Application.Run (ui);
+            // ik weet niet of je hier nog een sale aan moet maken of niet
+            //Sale sale = new Sale();
         }
 	}
 }

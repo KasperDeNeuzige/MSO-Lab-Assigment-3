@@ -22,6 +22,6 @@ namespace Lab3
             }*/
         }
 
-        public abstract void HandlePayment(float price);
+        public abstract bool PaymentSucceeded(float price);
     }
 }

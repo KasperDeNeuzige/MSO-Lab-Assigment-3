@@ -12,16 +12,18 @@ namespace Lab3
         {
             if (type == UIPayment.CreditCard)
                 c = new CreditCard();
-            else (type == UIPayment.DebitCard)
-                    c = new DebitCard();
+            else if (type == UIPayment.DebitCard)
+                c = new DebitCard();
+            else
+                return;
         }
-        public override void HandlePayment(float price)
+        public override bool PaymentSucceeded(float price)
         {
             c.Connect();
             int id = c.BeginTransaction(price);
-            if (c.EndTransaction(id)) { c.Disconnect(); return; }
+            if (c.EndTransaction(id)) { c.Disconnect(); return true; }
             c.CancelTransaction(id);
-            return;
+            return false;
         }
     }
 }

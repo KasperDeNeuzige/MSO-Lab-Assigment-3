@@ -10,8 +10,3 @@ D:\School\Visual C# Projects\MSOLab3\bin\Debug\Lab3.pdb
 D:\School\Visual C# Projects\MSOLab3\obj\x86\Debug\Lab3.csprojResolveAssemblyReference.cache
 C:\Users\Kasper!\Documents\GitHub\MSOLab3\obj\x86\Debug\Lab3.exe
 C:\Users\Kasper!\Documents\GitHub\MSOLab3\obj\x86\Debug\Lab3.pdb
-C:\Users\Kasper!\Documents\GitHub\MSO-Lab-Assigment-3\MSOLab3\obj\x86\Debug\Lab3.exe
-C:\Users\Kasper!\Documents\GitHub\MSO-Lab-Assigment-3\MSOLab3\obj\x86\Debug\Lab3.pdb
-C:\Users\Kasper!\Documents\GitHub\MSO-Lab-Assigment-3\MSOLab3\bin\Debug\Lab3.exe
-C:\Users\Kasper!\Documents\GitHub\MSO-Lab-Assigment-3\MSOLab3\bin\Debug\Lab3.pdb
-C:\Users\Kasper!\Documents\GitHub\MSO-Lab-Assigment-3\MSOLab3\obj\x86\Debug\Lab3.csprojResolveAssemblyReference.cache

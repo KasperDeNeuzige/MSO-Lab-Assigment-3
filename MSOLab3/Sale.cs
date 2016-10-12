@@ -2,12 +2,11 @@
 
 namespace Lab3
 {
-    public class Sale
+    class Sale
     {
         private Ticket ticket;
         private int amount;
         private Payment payment;
-        private float totalSalePrice;
 
         public Sale (UIInfo uiinfo, int amount = 1)
         {
@@ -21,7 +20,9 @@ namespace Lab3
 
             if (saleSucceeded)
                 ticket.printTicket();
-            logSale(saleSucceeded);
+            logSale(ticket, totalSalePrice, saleSucceeded);
+
+            // CreateReceipt?
         }
 
         Ticket CreateTicket(UIInfo uiinfo)
@@ -38,17 +39,15 @@ namespace Lab3
         }
         float totalPrice(UIPayment p)
         {
-            //Needs to change if it possible to get more than one ticket
-            //foreach (Ticket t in tickets)
             float price = ticket.ticketPrice;
             if (p == UIPayment.CreditCard)
                 price += .5f;
             return price;
         }
 
-        void logSale(bool saleSucceeded)
-        {//log this sale in the vending machines database
-            //dB.log(ticket, amount, DateTime.Today, result);
+        void logSale(Ticket t, float totalPrice, bool result)
+        {
+            //dB.log(ticket, totalPrice, DateTime.Today, result);
         }
     }
 }

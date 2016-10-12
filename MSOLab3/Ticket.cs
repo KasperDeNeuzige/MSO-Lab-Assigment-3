@@ -3,24 +3,24 @@
 
 namespace Lab3
 {
-    public class Ticket
+    class Ticket
     {
         private string origin, dest;
         private DateTime dateValid;
         private UIDiscount discount; //enum
         private UIClass firstClass; //firstclass int
         private UIWay isReturn;
-        int tariefeenheden;
+        private int tariefeenheden;
         public float ticketPrice;
 
-        public Ticket(string origin, string dest, /*DateTime dateValid ,*/ UIDiscount discount, UIClass firstClass, UIWay isReturn)
+        public Ticket(string origin, string dest, UIDiscount discount, UIClass firstClass, UIWay isReturn)
         {
             this.origin = origin;
             this.dest = dest;
             this.discount = discount;
             this.firstClass = firstClass;
             this.isReturn = isReturn;
-            //this.dateValid = dateValid;
+            dateValid = DateTime.Today; // In UI geen optie voor datum onbekend.
             tariefeenheden = Tariefeenheden.getTariefeenheden (origin, dest);
             ticketPrice = calculatePrice();
         }

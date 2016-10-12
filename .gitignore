@@ -1,0 +1,6 @@
+*.suo
+MSOLab3/bin/Debug/Lab3.exe
+*.exe
+*.pdb
+*.cache
+*.txt

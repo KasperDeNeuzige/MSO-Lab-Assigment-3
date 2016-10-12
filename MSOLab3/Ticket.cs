@@ -6,8 +6,8 @@ namespace Lab3
     public class Ticket
     {
         public string origin, dest;
-        public float discount;
-        public bool firstClass, isReturn;
+        public float discount; //enum
+        public bool firstClass, isReturn; //firstclass int
         public DateTime dateValid;
         int tariefeenheden;
 

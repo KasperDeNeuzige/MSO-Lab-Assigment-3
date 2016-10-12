@@ -25,7 +25,7 @@ namespace Lab3
             ticketPrice = calculatePrice();
         }
 
-        public float calculatePrice()
+        private float calculatePrice()
         {//calculate the table column using class and discount, then get price from the pricing table
             int tableColumn = 0;
             if (firstClass == UIClass.FirstClass)

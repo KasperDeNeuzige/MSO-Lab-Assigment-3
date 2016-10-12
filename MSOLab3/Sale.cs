@@ -4,19 +4,19 @@ namespace Lab3
 {
     public class Sale
     {
-        Ticket ticket;
-        int amount;
-        Payment payment;
-        float totalSalePrice;
+        private Ticket ticket;
+        private int amount;
+        private Payment payment;
+        private float totalSalePrice;
 
         public Sale (UIInfo uiinfo, int amount = 1)
         {
             this.amount = amount;
             // do this amount times if it is possible to order more tickets
             ticket = CreateTicket(uiinfo);
-            payment = CreatePayment(uiinfo);
+            payment = CreatePayment(uiinfo.Payment);
 
-            float totalSalePrice = totalPrice();
+            float totalSalePrice = totalPrice(uiinfo.Payment);
             bool saleSucceeded = payment.PaymentSucceeded(totalSalePrice);
 
             if (saleSucceeded)
@@ -29,19 +29,21 @@ namespace Lab3
             return ticket = new Ticket(uiinfo.From, uiinfo.To, uiinfo.Discount, uiinfo.Class, uiinfo.Way);
         }
 
-        Payment CreatePayment(UIInfo uiinfo)
+        Payment CreatePayment(UIPayment payment)
         {
-
-            if (uiinfo.Payment == UIPayment.Cash)
+            if (payment == UIPayment.Cash)
                 return new IKEAMyntPaymentAdapter();
             else
-                return new ICardPaymentAdapter(uiinfo.Payment);
+                return new ICardPaymentAdapter(payment);
         }
-        float totalPrice()
+        float totalPrice(UIPayment p)
         {
             //Needs to change if it possible to get more than one ticket
             //foreach (Ticket t in tickets)
-            return ticket.ticketPrice;
+            float price = ticket.ticketPrice;
+            if (p == UIPayment.CreditCard)
+                price += .5f;
+            return price;
         }
 
         void logSale(bool saleSucceeded)

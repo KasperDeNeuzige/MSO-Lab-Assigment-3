@@ -17,6 +17,7 @@ namespace Lab3
             else
                 return;
         }
+
         public override bool PaymentSucceeded(float price)
         {
             c.Connect();

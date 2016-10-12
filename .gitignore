@@ -4,3 +4,5 @@ MSOLab3/bin/Debug/Lab3.exe
 *.pdb
 *.cache
 *.txt
+*.pdb
+*.exe

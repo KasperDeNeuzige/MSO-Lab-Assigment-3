@@ -5,12 +5,11 @@ namespace Lab3
 {
     public class Ticket
     {
-        public string origin, dest;
-        public DateTime dateValid;
-        public UIDiscount discount; //enum
-        public UIClass firstClass;//firstclass int
-        public UIWay isReturn;
-        // public DateTime dateValid;
+        private string origin, dest;
+        private DateTime dateValid;
+        private UIDiscount discount; //enum
+        private UIClass firstClass; //firstclass int
+        private UIWay isReturn;
         int tariefeenheden;
         public float ticketPrice;
 
@@ -23,18 +22,31 @@ namespace Lab3
             this.isReturn = isReturn;
             //this.dateValid = dateValid;
             tariefeenheden = Tariefeenheden.getTariefeenheden (origin, dest);
-            ticketPrice = price();
+            ticketPrice = calculatePrice();
         }
 
-        public float price()
+        public float calculatePrice()
         {//calculate the table column using class and discount, then get price from the pricing table
             int tableColumn = 0;
-            if (firstClass == UIClass.FirstClass) { tableColumn = 3; }
-            if (discount == UIDiscount.TwentyDiscount) { tableColumn += 1; }
-            else if (discount == UIDiscount.FortyDiscount) { tableColumn += 2; }
+            if (firstClass == UIClass.FirstClass)
+            {
+                tableColumn = 3;
+            }
+
+            if (discount == UIDiscount.TwentyDiscount)
+            {
+                tableColumn += 1;
+            }
+            else if (discount == UIDiscount.FortyDiscount)
+            {
+                tableColumn += 2;
+            }
 
             float finalPrice = PricingTable.getPrice(tariefeenheden, tableColumn);
-            if (isReturn == UIWay.Return) { finalPrice *= 2; }
+            if (isReturn == UIWay.Return)
+            {
+                finalPrice *= 2;
+            }
             return finalPrice;
         }
 

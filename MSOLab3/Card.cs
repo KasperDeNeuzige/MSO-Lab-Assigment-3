@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Lab3
 {
-	public interface ICard
+	public interface ICard 
 	{
 		void Connect();
 		void Disconnect();

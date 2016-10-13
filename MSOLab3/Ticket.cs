@@ -64,5 +64,11 @@ namespace Lab3
         {//print this ticket
             //printer.PrintTicket(this);
         }
+
+        // We need the totalPrice for the credit card fee.
+        public void PrintReceipt(float totalPrice)
+        {
+            //printer.printReceipt(this, totalPrice);
+        }
     }
 }

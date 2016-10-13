@@ -4,50 +4,60 @@ namespace Lab3
 {
     class Sale
     {
-        private Ticket ticket;
-        private int amount;
+        private Ticket ticket;        
         private Payment payment;
+        private UIInfo uiInfo;
+        // private DataBase db;
 
-        public Sale (UIInfo uiinfo, int amount = 1)
+        public Sale (UIInfo uiInfo)
         {
-            this.amount = amount;
-            // do this amount times if it is possible to order more tickets
-            ticket = CreateTicket(uiinfo);
-            payment = CreatePayment(uiinfo.Payment);
+            // Adjust price and amount of tickets printed if amountTickets were gained from uiinfo            
+            this.uiInfo = uiInfo;
+            CreateTicket();
+            CreatePayment();
+        }
 
-            float totalSalePrice = totalPrice(uiinfo.Payment);
+        private void handleSale()
+        {
+            float totalSalePrice = totalPrice();
             bool saleSucceeded = payment.PaymentSucceeded(totalSalePrice);
 
             if (saleSucceeded)
                 ticket.PrintTicket();
-            logSale(ticket, totalSalePrice, saleSucceeded);
-                        
-            // CreateReceipt?
+            logSale(totalSalePrice, saleSucceeded);
+
+            /* 
+             * if(uiinfo.receiptRequested && saleSucceeded)              
+             *     ticket.PrintReceipt(totalSalePrice)              
+             */
+
+            // UI.restart();
         }
 
-        Ticket CreateTicket(UIInfo uiinfo)
+        void CreateTicket()
         {
-            return ticket = new Ticket(uiinfo.From, uiinfo.To, uiinfo.Discount, uiinfo.Class, uiinfo.Way);
+            ticket = new Ticket(uiInfo.From, uiInfo.To, uiInfo.Discount, uiInfo.Class, uiInfo.Way);
         }
 
-        Payment CreatePayment(UIPayment payment)
+        void CreatePayment()
         {
-            if (payment == UIPayment.Cash)
-                return new IKEAMyntPaymentAdapter();
+            if (uiInfo.Payment == UIPayment.Cash)
+                payment = new IKEAMyntPaymentAdapter();
             else
-                return new ICardPaymentAdapter(payment);
+                payment = new ICardPaymentAdapter(uiInfo.Payment);
         }
-        float totalPrice(UIPayment p)
+
+        float totalPrice()
         {
             float price = ticket.ticketPrice;
-            if (p == UIPayment.CreditCard)
+            if (uiInfo.Payment == UIPayment.CreditCard)
                 price += .5f;
             return price;
         }
 
-        void logSale(Ticket t, float totalPrice, bool result)
+        void logSale(float totalPrice, bool result)
         {
-            //dB.log(ticket, totalPrice, DateTime.Today, result);
+            //db.Log(ticket, totalPrice, saleDate, result);
         }
     }
 }

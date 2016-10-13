@@ -11,7 +11,7 @@ namespace Lab3
 
         public Sale (UIInfo uiInfo)
         {
-            // Adjust price and amount of tickets printed if amountTickets were gained from uiinfo            
+            // Should adjust price and amount of tickets printed if amountTickets were gained from uiinfo            
             this.uiInfo = uiInfo;
             CreateTicket();
             CreatePayment();

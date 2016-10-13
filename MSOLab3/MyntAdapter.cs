@@ -16,7 +16,7 @@ namespace Lab3
         public override bool PaymentSucceeded(float price)
         {
             mynt.starta();
-            mynt.betala((int)price * 100);
+            mynt.betala((int)(price * 100));
             mynt.stoppa();
             return true;
         }

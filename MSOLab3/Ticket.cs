@@ -7,8 +7,8 @@ namespace Lab3
     {
         private string origin, dest;
         private DateTime dateValid;
-        private UIDiscount discount; //enum
-        private UIClass firstClass; //firstclass int
+        private UIDiscount discount;
+        private UIClass firstClass; 
         private UIWay isReturn;
         private int tariefEenheden;
         // private Printer printer
@@ -32,31 +32,20 @@ namespace Lab3
         {
             int tableColumn = 0;
             if (firstClass == UIClass.FirstClass)
-            {
                 tableColumn = 3;
-            }
-
             if (discount == UIDiscount.TwentyDiscount)
-            {
                 tableColumn += 1;
-            }
             else if (discount == UIDiscount.FortyDiscount)
-            {
                 tableColumn += 2;
-            }
 
             return tableColumn;
         }
 
         private float CalculatePrice(int tableColumn)
         {//calculate the table column using class and discount, then get price from the pricing table
-            
-
             float finalPrice = PricingTable.getPrice(tariefEenheden, tableColumn);
             if (isReturn == UIWay.Return)
-            {
                 finalPrice *= 2;
-            }
             return finalPrice;
         }
 

@@ -5,19 +5,19 @@ using System.Text;
 
 namespace Lab3
 {
-    class IKEAMyntPaymentAdapter : Payment
+    class MyntAdapter : Payment
     {
-        IKEAMyntAtare2000 c;
-        public IKEAMyntPaymentAdapter ()
+        IKEAMyntAtare2000 mynt;
+        public MyntAdapter ()
         {
-            c = new IKEAMyntAtare2000();
+            mynt = new IKEAMyntAtare2000();
         }
 
         public override bool PaymentSucceeded(float price)
         {
-            c.starta();
-            c.betala((int)price * 100);
-            c.stoppa();
+            mynt.starta();
+            mynt.betala((int)price * 100);
+            mynt.stoppa();
             return true;
         }
     }

@@ -15,11 +15,12 @@ namespace Lab3
             this.uiInfo = uiInfo;
             CreateTicket();
             CreatePayment();
+            HandleSale();
         }
 
-        private void handleSale()
+        private void HandleSale()
         {
-            float totalSalePrice = totalPrice();
+            float totalSalePrice = TotalPrice();
             bool saleSucceeded = payment.PaymentSucceeded(totalSalePrice);
 
             if (saleSucceeded)
@@ -42,12 +43,12 @@ namespace Lab3
         void CreatePayment()
         {
             if (uiInfo.Payment == UIPayment.Cash)
-                payment = new IKEAMyntPaymentAdapter();
+                payment = new MyntAdapter();
             else
                 payment = new ICardPaymentAdapter(uiInfo.Payment);
         }
 
-        float totalPrice()
+        float TotalPrice()
         {
             float price = ticket.ticketPrice;
             if (uiInfo.Payment == UIPayment.CreditCard)

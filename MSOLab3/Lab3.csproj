@@ -38,7 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ICardPaymentAdapter.cs" />
-    <Compile Include="IKEAMyntPaymentAdapter.cs" />
+    <Compile Include="MyntAdapter.cs" />
     <Compile Include="Payment.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

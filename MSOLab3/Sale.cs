@@ -19,9 +19,9 @@ namespace Lab3
             bool saleSucceeded = payment.PaymentSucceeded(totalSalePrice);
 
             if (saleSucceeded)
-                ticket.printTicket();
+                ticket.PrintTicket();
             logSale(ticket, totalSalePrice, saleSucceeded);
-
+                        
             // CreateReceipt?
         }
 

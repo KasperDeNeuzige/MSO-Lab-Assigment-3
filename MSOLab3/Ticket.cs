@@ -10,7 +10,8 @@ namespace Lab3
         private UIDiscount discount; //enum
         private UIClass firstClass; //firstclass int
         private UIWay isReturn;
-        private int tariefeenheden;
+        private int tariefEenheden;
+        // private Printer printer
         public float ticketPrice;
 
         public Ticket(string origin, string dest, UIDiscount discount, UIClass firstClass, UIWay isReturn)
@@ -21,12 +22,14 @@ namespace Lab3
             this.firstClass = firstClass;
             this.isReturn = isReturn;
             dateValid = DateTime.Today; // In UI geen optie voor datum onbekend.
-            tariefeenheden = Tariefeenheden.getTariefeenheden (origin, dest);
-            ticketPrice = calculatePrice();
-        }
 
-        private float calculatePrice()
-        {//calculate the table column using class and discount, then get price from the pricing table
+            tariefEenheden = Tariefeenheden.getTariefeenheden (origin, dest);
+            int tableColumn = CalculateTableColumn();
+            ticketPrice = CalculatePrice(tableColumn);
+        }
+        
+        private int CalculateTableColumn()
+        {
             int tableColumn = 0;
             if (firstClass == UIClass.FirstClass)
             {
@@ -42,7 +45,14 @@ namespace Lab3
                 tableColumn += 2;
             }
 
-            float finalPrice = PricingTable.getPrice(tariefeenheden, tableColumn);
+            return tableColumn;
+        }
+
+        private float CalculatePrice(int tableColumn)
+        {//calculate the table column using class and discount, then get price from the pricing table
+            
+
+            float finalPrice = PricingTable.getPrice(tariefEenheden, tableColumn);
             if (isReturn == UIWay.Return)
             {
                 finalPrice *= 2;
@@ -50,9 +60,9 @@ namespace Lab3
             return finalPrice;
         }
 
-        public void printTicket()
+        public void PrintTicket()
         {//print this ticket
-            //printer.printTicket(this);
+            //printer.PrintTicket(this);
         }
     }
 }
